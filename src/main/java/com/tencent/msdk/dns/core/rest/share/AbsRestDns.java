@@ -419,7 +419,8 @@ public abstract class AbsRestDns implements IDns<LookupExtra> {
          */
         public long expiredTime = 0;
         /**
-         * 缓存开始时间
+         * 缓存开始时间，作用于缓存逻辑判断
+         * [缓存开始时间 < 当前时间 < 过期时间]，将缓存有效期限制在时间范围内，用户通过修改当前时间不会导致命中缓存
          */
         public long beginTime = 0;
         /**
