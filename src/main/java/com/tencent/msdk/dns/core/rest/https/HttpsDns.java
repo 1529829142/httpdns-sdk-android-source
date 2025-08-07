@@ -33,16 +33,16 @@ public final class HttpsDns extends AbsHttpDns {
         String reqContent;
         long timestamp = AbsHttpDns.getFutureTimestamp(10);
         // 域名字段中带上失效时间戳，用于底层鉴权
-        String AuthenticationHostname = hostname + ';' + timestamp;
+        String authHostname = hostname + ';' + timestamp;
         switch (mFamily) {
             case DnsDescription.Family.INET:
-                reqContent = RequestBuilder.buildHttpsInetRequest(AuthenticationHostname, lookupExtra.bizId, lookupExtra.token);
+                reqContent = RequestBuilder.buildHttpsInetRequest(authHostname, lookupExtra.bizId, lookupExtra.token);
                 break;
             case DnsDescription.Family.INET6:
-                reqContent = RequestBuilder.buildHttpsInet6Request(AuthenticationHostname, lookupExtra.bizId, lookupExtra.token);
+                reqContent = RequestBuilder.buildHttpsInet6Request(authHostname, lookupExtra.bizId, lookupExtra.token);
                 break;
             case DnsDescription.Family.UN_SPECIFIC:
-                reqContent = RequestBuilder.buildHttpsDoubRequest(AuthenticationHostname, lookupExtra.bizId, lookupExtra.token);
+                reqContent = RequestBuilder.buildHttpsDoubRequest(authHostname, lookupExtra.bizId, lookupExtra.token);
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + mFamily);
