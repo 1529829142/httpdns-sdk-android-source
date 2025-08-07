@@ -229,6 +229,7 @@ public final class ReportHelper {
                     }
                     // 报错记录+1
                     backupInfo.incrementErrorCount();
+                    DnsLog.d("dnsip连接失败, 当前失败次数：" + backupInfo.getErrorCount());
                 } else {
                     if (enableReport) {
                         MAIN.execute(AttaHelper.report(statMerge.netType, sDnsConfig.lookupExtra.bizId,
